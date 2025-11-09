@@ -1,0 +1,21 @@
+# Dependency directories
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment files
+.env
+
+# Build and output directories
+dist/
+build/
+.next/
+
+# System and log files
+.DS_Store
+*.log
+
+# Optional IDE/editor files
+.vscode/
+.idea/
+*.swp

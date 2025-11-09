@@ -1,6 +1,6 @@
 # Ink-Credi-Art
 
-**Ink-Credi-Art** is a real-time collaborative sketching platform built with **Next.js, TypeScript, and Socket.IO**. It allows multiple users to join a room, draw together on a shared canvas, upload images, insert shapes, and export the final artwork as a PNG — all synchronized live.
+**Ink-Credi-Art** is a real-time collaborative sketching platform built with **Next.js, TypeScript, and Socket.IO**. It allows multiple users to join a room, draw together on a shared canvas, upload images, insert shapes, and export the final artwork as a PNG ; all synchronized live.
 
 
 ## Features

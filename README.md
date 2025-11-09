@@ -51,7 +51,8 @@
 ## Installation & Setup
 
 ### 1. Enter the project folder
-cd ink-credi-art
+
+'cd ink-credi-art'
 
 ### 2. Run the Server
 

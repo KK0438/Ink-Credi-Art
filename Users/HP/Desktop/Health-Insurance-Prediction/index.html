@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Insurance Premium Predictor - ML Dashboard</title>
+    <meta name="description" content="Machine Learning model predicting health insurance premiums using demographic and medical data. Powered by Tuned Random Forest with 98.66% R2 accuracy.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div class="brand-text">
+                    <h2>MediCost AI</h2>
+                    <span>Premium Analytics</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-tab="calculator">
+                    <i class="fa-solid fa-calculator"></i>
+                    <span>Premium Predictor</span>
+                </button>
+                <button class="nav-btn" data-tab="models">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Model Comparison</span>
+                </button>
+                <button class="nav-btn" data-tab="features">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>Feature Importance</span>
+                </button>
+                <button class="nav-btn" data-tab="analytics">
+                    <i class="fa-solid fa-chart-scatter"></i>
+                    <span>Scatter & Analytics</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-card">
+                <div class="card-badge">Top Model</div>
+                <h4>Random Forest Tuned</h4>
+                <div class="metric-highlight">
+                    <span class="value" id="top-accuracy">98.66%</span>
+                    <span class="label">R² Accuracy Score</span>
+                </div>
+                <div class="metric-sub">
+                    <span><i class="fa-solid fa-bullseye"></i> MAE: $1,115</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="header-title">
+                    <h1>Health Insurance Premium Prediction</h1>
+                    <p>Demographic & Medical Risk Machine Learning Analytics Engine</p>
+                </div>
+                <div class="header-actions">
+                    <div class="status-chip">
+                        <span class="status-dot"></span>
+                        Model Trained & Active
+                    </div>
+                    <button class="btn btn-outline" id="btn-reseed">
+                        <i class="fa-solid fa-rotate"></i> Reload Model Data
+                    </button>
+                </div>
+            </header>
+
+            <!-- TAB 1: Calculator -->
+            <section id="tab-calculator" class="tab-pane active">
+                <div class="grid-2col">
+                    <!-- Calculator Inputs -->
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-sliders"></i> Patient Demographic & Health Inputs</h3>
+                            <p>Adjust variables to forecast annual medical insurance charges.</p>
+                        </div>
+                        <form id="predictor-form" class="form-grid">
+                            <div class="form-group">
+                                <label for="input-age">Age: <span id="val-age" class="badge">35</span> yrs</label>
+                                <input type="range" id="input-age" min="18" max="64" value="35">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input-bmi">BMI (Body Mass Index): <span id="val-bmi" class="badge badge-normal">27.5</span></label>
+                                <input type="range" id="input-bmi" min="15.0" max="50.0" step="0.1" value="27.5">
+                                <span class="bmi-category" id="bmi-label">Overweight (25 - 29.9)</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input-sex">Sex / Gender</label>
+                                <select id="input-sex" class="form-control">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input-children">Number of Children / Dependents</label>
+                                <select id="input-children" class="form-control">
+                                    <option value="0">0 Dependents</option>
+                                    <option value="1">1 Dependent</option>
+                                    <option value="2" selected>2 Dependents</option>
+                                    <option value="3">3 Dependents</option>
+                                    <option value="4">4 Dependents</option>
+                                    <option value="5">5+ Dependents</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input-smoker">Smoking Status</label>
+                                <div class="toggle-group">
+                                    <button type="button" class="toggle-btn active" data-value="no">Non-Smoker</button>
+                                    <button type="button" class="toggle-btn" data-value="yes">Smoker <i class="fa-solid fa-smoking"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input-region">U.S. Geographic Region</label>
+                                <select id="input-region" class="form-control">
+                                    <option value="southwest">Southwest</option>
+                                    <option value="southeast" selected>Southeast</option>
+                                    <option value="northwest">Northwest</option>
+                                    <option value="northeast">Northeast</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Prediction Result Display -->
+                    <div class="glass-card result-card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-file-invoice-dollar"></i> Estimated Annual Premium</h3>
+                            <span class="sparkle-badge">Random Forest Engine</span>
+                        </div>
+
+                        <div class="premium-display">
+                            <div class="currency">$</div>
+                            <div class="amount" id="predicted-amount">9,420</div>
+                            <div class="period">/ year</div>
+                        </div>
+
+                        <div class="monthly-breakdown">
+                            Estimated Monthly: <strong id="monthly-amount">$785.00</strong>
+                        </div>
+
+                        <div class="risk-meter-container">
+                            <div class="risk-header">
+                                <span>Health Risk Factor Index</span>
+                                <strong id="risk-score-text">Moderate (3 / 10)</strong>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" id="risk-fill" style="width: 30%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="factor-breakdown">
+                            <h4><i class="fa-solid fa-chart-pie"></i> Premium Cost Drivers Breakdown</h4>
+                            <ul class="breakdown-list" id="breakdown-list">
+                                <!-- Dynamic breakdown items inserted by JS -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: Model Comparison -->
+            <section id="tab-models" class="tab-pane">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-trophy"></i> Regression Algorithm Performance & Tuning Benchmark</h3>
+                        <p>Evaluated across 268 test samples with 5-Fold Cross Validation & Grid Search hyperparameter optimization.</p>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Algorithm</th>
+                                    <th>R² Accuracy Score</th>
+                                    <th>MAE ($)</th>
+                                    <th>RMSE ($)</th>
+                                    <th>MAPE (%)</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="models-table-body">
+                                <!-- JS populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid-2col margin-top">
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-chart-bar"></i> Algorithm R² Score Comparison</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="chart-models-r2"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-sliders"></i> Best Hyperparameters (Random Forest)</h3>
+                        </div>
+                        <div class="params-grid" id="params-container">
+                            <!-- JS populated -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: Feature Importance -->
+            <section id="tab-features" class="tab-pane">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-diagram-project"></i> Feature Importance (Random Forest Optimized)</h3>
+                        <p>Quantifying the relative contribution of demographic, lifestyle, and engineered interaction terms.</p>
+                    </div>
+                    <div class="chart-container large">
+                        <canvas id="chart-feature-importance"></canvas>
+                    </div>
+                </div>
+
+                <div class="grid-3col margin-top">
+                    <div class="glass-card info-card">
+                        <div class="icon-box warning">
+                            <i class="fa-solid fa-smoking"></i>
+                        </div>
+                        <h4>Smoker * BMI Interaction</h4>
+                        <p>Primary cost driver (~38.8% importance). Obese individuals who smoke incur exponential medical claim risks, driving premiums up by +$30,000+.</p>
+                    </div>
+
+                    <div class="glass-card info-card">
+                        <div class="icon-box info">
+                            <i class="fa-solid fa-user-clock"></i>
+                        </div>
+                        <h4>Age Progression</h4>
+                        <p>Second major factor (~16.2% importance). Medical risk increases predictably by approximately $250 per year of age.</p>
+                    </div>
+
+                    <div class="glass-card info-card">
+                        <div class="icon-box success">
+                            <i class="fa-solid fa-weight-scale"></i>
+                        </div>
+                        <h4>BMI Discretization</h4>
+                        <p>Body Mass Index above 30.0 creates a distinct step-function increase in underwriters' baseline risk calculations.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: Analytics Scatter -->
+            <section id="tab-analytics" class="tab-pane">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-chart-line"></i> Actual vs. Predicted Premiums Scatter Plot</h3>
+                        <p>Test set predictions against true medical charges demonstrating tight correlation along the diagonal identity line.</p>
+                    </div>
+                    <div class="chart-container large">
+                        <canvas id="chart-scatter"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

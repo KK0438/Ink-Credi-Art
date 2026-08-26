@@ -1,0 +1,471 @@
+{
+  "metrics": {
+    "Linear Regression": {
+      "R2_Score": 0.9525,
+      "MAE": 1786.37,
+      "RMSE": 2825.15,
+      "MAPE": 8.42
+    },
+    "Ridge Regression": {
+      "R2_Score": 0.9499,
+      "MAE": 1841.08,
+      "RMSE": 2902.02,
+      "MAPE": 8.79
+    },
+    "Decision Tree": {
+      "R2_Score": 0.9792,
+      "MAE": 1271.57,
+      "RMSE": 1871.24,
+      "MAPE": 7.77
+    },
+    "Random Forest (Default)": {
+      "R2_Score": 0.986,
+      "MAE": 1139.46,
+      "RMSE": 1535.86,
+      "MAPE": 7.41
+    },
+    "Gradient Boosting": {
+      "R2_Score": 0.9862,
+      "MAE": 1098.57,
+      "RMSE": 1522.24,
+      "MAPE": 7.11
+    },
+    "Random Forest (Tuned)": {
+      "R2_Score": 0.9866,
+      "MAE": 1115.91,
+      "RMSE": 1501.84,
+      "MAPE": 7.16
+    }
+  },
+  "best_params": {
+    "max_depth": 8,
+    "max_features": 1.0,
+    "min_samples_leaf": 2,
+    "min_samples_split": 10,
+    "n_estimators": 200
+  },
+  "feature_importances": [
+    {
+      "feature": "smoker_bmi_interaction",
+      "importance": 0.3881956761158434
+    },
+    {
+      "feature": "smoker_yes",
+      "importance": 0.33938917261565377
+    },
+    {
+      "feature": "age",
+      "importance": 0.1617457786063414
+    },
+    {
+      "feature": "age_group_young",
+      "importance": 0.053079555202842424
+    },
+    {
+      "feature": "bmi",
+      "importance": 0.03017418304397038
+    },
+    {
+      "feature": "age_group_senior",
+      "importance": 0.007335617044988807
+    },
+    {
+      "feature": "bmi_category_obese",
+      "importance": 0.0055462469248507
+    },
+    {
+      "feature": "smoker_obese_interaction",
+      "importance": 0.004418377696303465
+    },
+    {
+      "feature": "risk_score",
+      "importance": 0.0036683007526414576
+    },
+    {
+      "feature": "children",
+      "importance": 0.003407182636151078
+    },
+    {
+      "feature": "region_southeast",
+      "importance": 0.0010558535291575201
+    },
+    {
+      "feature": "region_northwest",
+      "importance": 0.0006743413869121096
+    },
+    {
+      "feature": "sex_male",
+      "importance": 0.0006262397594881753
+    },
+    {
+      "feature": "region_southwest",
+      "importance": 0.0004785700201792874
+    },
+    {
+      "feature": "bmi_category_overweight",
+      "importance": 0.00017424613784064826
+    },
+    {
+      "feature": "bmi_category_underweight",
+      "importance": 3.065852683548407e-05
+    }
+  ],
+  "sample_predictions": [
+    {
+      "actual": 16343.88,
+      "predicted": 16440.58183841049,
+      "smoker": "no",
+      "bmi": 33.5,
+      "age": 51
+    },
+    {
+      "actual": 52165.05,
+      "predicted": 53122.07243004805,
+      "smoker": "yes",
+      "bmi": 36.9,
+      "age": 40
+    },
+    {
+      "actual": 19546.39,
+      "predicted": 19626.579579197227,
+      "smoker": "no",
+      "bmi": 23.9,
+      "age": 64
+    },
+    {
+      "actual": 9643.17,
+      "predicted": 8111.317340422114,
+      "smoker": "no",
+      "bmi": 28.2,
+      "age": 19
+    },
+    {
+      "actual": 57746.75,
+      "predicted": 57359.09680260927,
+      "smoker": "yes",
+      "bmi": 31.7,
+      "age": 59
+    },
+    {
+      "actual": 18081.69,
+      "predicted": 17817.35316543946,
+      "smoker": "no",
+      "bmi": 32.0,
+      "age": 52
+    },
+    {
+      "actual": 8599.57,
+      "predicted": 9645.319550380822,
+      "smoker": "no",
+      "bmi": 22.3,
+      "age": 27
+    },
+    {
+      "actual": 11545.96,
+      "predicted": 12106.979940760932,
+      "smoker": "no",
+      "bmi": 29.2,
+      "age": 34
+    },
+    {
+      "actual": 12134.4,
+      "predicted": 12391.261287342179,
+      "smoker": "no",
+      "bmi": 28.8,
+      "age": 40
+    },
+    {
+      "actual": 9499.93,
+      "predicted": 11074.101911648006,
+      "smoker": "no",
+      "bmi": 22.2,
+      "age": 30
+    },
+    {
+      "actual": 30855.27,
+      "predicted": 30744.186209958345,
+      "smoker": "yes",
+      "bmi": 22.2,
+      "age": 40
+    },
+    {
+      "actual": 11495.72,
+      "predicted": 12945.738516235248,
+      "smoker": "no",
+      "bmi": 28.4,
+      "age": 36
+    },
+    {
+      "actual": 23979.88,
+      "predicted": 24989.502794624175,
+      "smoker": "yes",
+      "bmi": 27.3,
+      "age": 25
+    },
+    {
+      "actual": 22736.76,
+      "predicted": 22989.94866559049,
+      "smoker": "yes",
+      "bmi": 24.7,
+      "age": 18
+    },
+    {
+      "actual": 10699.91,
+      "predicted": 11699.420023518633,
+      "smoker": "no",
+      "bmi": 23.1,
+      "age": 34
+    },
+    {
+      "actual": 17475.54,
+      "predicted": 17960.556804059765,
+      "smoker": "no",
+      "bmi": 34.0,
+      "age": 55
+    },
+    {
+      "actual": 15958.84,
+      "predicted": 15974.394219711143,
+      "smoker": "no",
+      "bmi": 34.0,
+      "age": 45
+    },
+    {
+      "actual": 16857.06,
+      "predicted": 16021.808819053873,
+      "smoker": "no",
+      "bmi": 24.8,
+      "age": 54
+    },
+    {
+      "actual": 19364.63,
+      "predicted": 18196.096216469385,
+      "smoker": "no",
+      "bmi": 42.8,
+      "age": 54
+    },
+    {
+      "actual": 29035.23,
+      "predicted": 29494.571943349507,
+      "smoker": "yes",
+      "bmi": 28.6,
+      "age": 35
+    },
+    {
+      "actual": 41418.88,
+      "predicted": 42988.49063460957,
+      "smoker": "yes",
+      "bmi": 30.6,
+      "age": 22
+    },
+    {
+      "actual": 20682.08,
+      "predicted": 19851.209240513494,
+      "smoker": "no",
+      "bmi": 26.8,
+      "age": 64
+    },
+    {
+      "actual": 10753.43,
+      "predicted": 11875.13514803541,
+      "smoker": "no",
+      "bmi": 33.4,
+      "age": 29
+    },
+    {
+      "actual": 13347.55,
+      "predicted": 13472.86164751627,
+      "smoker": "no",
+      "bmi": 31.6,
+      "age": 40
+    },
+    {
+      "actual": 16914.49,
+      "predicted": 17031.817177745044,
+      "smoker": "no",
+      "bmi": 28.0,
+      "age": 57
+    },
+    {
+      "actual": 31064.43,
+      "predicted": 29670.285071456783,
+      "smoker": "yes",
+      "bmi": 28.2,
+      "age": 39
+    },
+    {
+      "actual": 31987.19,
+      "predicted": 32141.46253673052,
+      "smoker": "yes",
+      "bmi": 26.3,
+      "age": 43
+    },
+    {
+      "actual": 11702.27,
+      "predicted": 12842.60493592551,
+      "smoker": "no",
+      "bmi": 26.6,
+      "age": 36
+    },
+    {
+      "actual": 9524.59,
+      "predicted": 9508.814198535,
+      "smoker": "no",
+      "bmi": 28.1,
+      "age": 20
+    },
+    {
+      "actual": 15680.14,
+      "predicted": 13311.24256803479,
+      "smoker": "no",
+      "bmi": 46.6,
+      "age": 34
+    },
+    {
+      "actual": 52463.26,
+      "predicted": 52427.28624863444,
+      "smoker": "yes",
+      "bmi": 34.0,
+      "age": 46
+    },
+    {
+      "actual": 16070.47,
+      "predicted": 14711.378514558735,
+      "smoker": "no",
+      "bmi": 24.9,
+      "age": 45
+    },
+    {
+      "actual": 10065.11,
+      "predicted": 10992.615515955358,
+      "smoker": "no",
+      "bmi": 25.9,
+      "age": 34
+    },
+    {
+      "actual": 11463.29,
+      "predicted": 8771.24131765491,
+      "smoker": "no",
+      "bmi": 27.6,
+      "age": 22
+    },
+    {
+      "actual": 9060.25,
+      "predicted": 7899.264596636298,
+      "smoker": "no",
+      "bmi": 30.4,
+      "age": 21
+    },
+    {
+      "actual": 32179.21,
+      "predicted": 33445.08433251643,
+      "smoker": "yes",
+      "bmi": 28.7,
+      "age": 47
+    },
+    {
+      "actual": 49066.58,
+      "predicted": 50902.25675234985,
+      "smoker": "yes",
+      "bmi": 35.0,
+      "age": 39
+    },
+    {
+      "actual": 17535.16,
+      "predicted": 16145.316653662097,
+      "smoker": "no",
+      "bmi": 30.8,
+      "age": 50
+    },
+    {
+      "actual": 15194.41,
+      "predicted": 15109.318470275039,
+      "smoker": "no",
+      "bmi": 34.5,
+      "age": 43
+    },
+    {
+      "actual": 11778.92,
+      "predicted": 13326.238634710284,
+      "smoker": "no",
+      "bmi": 25.2,
+      "age": 37
+    },
+    {
+      "actual": 11245.76,
+      "predicted": 12690.734247354336,
+      "smoker": "no",
+      "bmi": 37.2,
+      "age": 33
+    },
+    {
+      "actual": 13693.64,
+      "predicted": 15287.695853193498,
+      "smoker": "no",
+      "bmi": 26.5,
+      "age": 50
+    },
+    {
+      "actual": 55767.19,
+      "predicted": 55615.25865318841,
+      "smoker": "yes",
+      "bmi": 39.9,
+      "age": 48
+    },
+    {
+      "actual": 14151.55,
+      "predicted": 15193.004216611736,
+      "smoker": "no",
+      "bmi": 26.6,
+      "age": 48
+    },
+    {
+      "actual": 15809.63,
+      "predicted": 17325.16820482458,
+      "smoker": "no",
+      "bmi": 30.8,
+      "age": 52
+    },
+    {
+      "actual": 7960.63,
+      "predicted": 8362.685932835368,
+      "smoker": "no",
+      "bmi": 26.1,
+      "age": 23
+    },
+    {
+      "actual": 16465.72,
+      "predicted": 19830.36820888445,
+      "smoker": "no",
+      "bmi": 26.2,
+      "age": 64
+    },
+    {
+      "actual": 46430.95,
+      "predicted": 46996.886376613795,
+      "smoker": "yes",
+      "bmi": 37.1,
+      "age": 25
+    },
+    {
+      "actual": 15022.24,
+      "predicted": 13219.91451971737,
+      "smoker": "no",
+      "bmi": 29.7,
+      "age": 39
+    },
+    {
+      "actual": 11374.83,
+      "predicted": 12515.328590523774,
+      "smoker": "no",
+      "bmi": 28.7,
+      "age": 37
+    }
+  ],
+  "summary": {
+    "train_size": 1070,
+    "test_size": 268,
+    "top_model": "Random Forest (Tuned)",
+    "accuracy_percentage": 98.66
+  }
+}
